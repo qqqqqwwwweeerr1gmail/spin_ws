@@ -51,5 +51,8 @@ if __name__ == '__main__':
     your_result = your_gaussian_likelihood.detach().numpy()
     true_result = true_gaussian_likelihood.detach().numpy()
 
+    print(your_result)
+    print(true_result)
+
     correct = np.allclose(your_result, true_result)
     print_result(correct)
