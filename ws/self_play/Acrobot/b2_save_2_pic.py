@@ -23,7 +23,7 @@ env.reset()
 step_num = 0
 
 # Main loop
-for _ in range(100):
+for _ in range(50):
     frame = env.render(mode='rgb_array')  # Render the environment
     action = env.action_space.sample()  # Sample random actions
     observation, reward, done, info = env.step(action)  # Take a step based on the action
@@ -37,7 +37,7 @@ for _ in range(100):
 
     # print(frame)
     step_num = _
-    figure(figsize=(8, 6), dpi=80)
+    figure(figsize=(9, 6), dpi=80)
     image = Image.fromarray(frame)
 
     text = f"Step number: {step_num}\n" \
@@ -50,15 +50,21 @@ for _ in range(100):
 
     plt.text(-150, 160, text, fontsize=10)
 
-    image.save(f'./img/acrobot_{step_num}.png')
-    print("Image saved as 'acrobot_rendered.png'")
+
 
     # Optionally, display the image using matplotlib (for verification)
     plt.imshow(frame)
     plt.axis('off')
+
+
+    # image.save(f'./img/acrobot_{step_num}.png')
+    plt.savefig(f'./img/acrobot_{step_num}.png',  pad_inches=1)
+    print("Image saved as 'acrobot_rendered.png'")
+
+
     plt.show()
 
     time.sleep(0.1)
-    time.sleep(1)
+    # time.sleep(1)
 
 env.close()  # Close the environment
